@@ -8,11 +8,14 @@
 </head>
 <body>
     <div class="container bg-light border rounded p-5">
-        <h1>Merci <?= $_POST['prenom'] ?> <?= $_POST['nom'] ?> de nous avoir contacté à propos de “<?= $_POST['sujet']?>”.</h1>
+        <h1>Merci <?= $_POST['prenom'] ?> <?= $_POST['nom'] ?> de nous avoir contacté à propos de “<?= $_POST['sujet'] ?>”.</h1>
         <h1>Un de nos conseillers vous contactera soit à l’adresse <?= $_POST['email'] ?> ou par téléphone 
             au <?= $_POST['telephone'] ?> dans les plus brefs délais pour traiter votre demande : </h1>
         <br/>
         <?= $_POST['message'] ?>
+
     </div>
+
 </body>
 </html>
+

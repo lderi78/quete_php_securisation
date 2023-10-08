@@ -1,55 +1,3 @@
-<?php
-
-$errors = [];
-
-// Tous les champs sont requis et ne doivent pas être vides.
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        
-        if ( empty( trim($_POST['prenom']) )  || trim($_POST['prenom']) === '' ) {
-            $errors[] = "Le prénom est obligatoire";
-        }
-
-        if ( empty( trim($_POST['nom']) )  || trim($_POST['nom']) === '' ) {
-            $errors[] = "Le nom est obligatoire";
-        }
-        if ( empty( trim($_POST['email']) )  || trim($_POST['email']) === '' ) {
-            $errors[] = "L'email est obligatoire";
-        }
-        if ( empty( trim($_POST['telephone']) )  || trim($_POST['telephone']) === '' ) {
-            $errors[] = "Le telephone est obligatoire";
-        }
-        if ( empty( trim($_POST['sujet'] ) ) || trim($_POST['sujet']) === '' ) {
-            $errors[] = "Le motif est obligatoire";
-        }
-        if ( empty( trim($_POST['message']) )  || trim($_POST['message']) === '' ) {
-            $errors[] = "Le message est obligatoire";
-        }
-    // L'email est au bon format ?
-        if(!filter_var(($email), FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Email au mauvais format";
-    }
-
-    // Si pas d'erreur, on traite les données.
-    if(empty($errors)) {
-        header('Location: thanks.php');
-    }
-
-}
-
-?>
-
-<?php // Affichage des éventuelles erreurs 
-      if (count($errors) > 0) : ?>
-        <div class="border border-danger rounded p-3 m-5 bg-danger">
-            <ul>
-                <?php foreach ($errors as $error) : ?>
-                    <li><?= $error ?></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
-<?php endif; ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,43 +8,42 @@ $errors = [];
 
 </head>
 <body>
-    <form action="/thanks.php" method="post" class="container bg-light border rounded p-5">
+    <form action="/result.php" method="post" class="container bg-light border rounded p-5">
         <h1 class="text-center">Votre commande</h1>
 
         <p class="row">
             <label for="fprenom" class="form-label">Prenom : </label>
-            <input type="text" name="prenom" required = "true">
+            <input type="text" id="fprenom" name="prenom"  require="true" class="form-control >
         </p>
 
         <p class="row">
             <label for="fnom" class="form-label">Nom : </label>
-            <input type="text" name="nom" required = "true">
+            <input type="text" id="fnom" name="nom"  require="true" class="form-control">
         </p>
 
         <p class="row">
             <label for="femail" class="form-label">Email : </label>
-            <input type="email" name="email" required = "true">
+            <input type="email" id="femail" name="email"  require="true" class="form-control">
         </p>
 
         <p class="row">
             <label for="ftelephone" class="form-label">Telephone : </label>
-            <input type="text" name="telephone" required = "true">
+            <input type="text" id="ftelephone" name="telephone"  require="true" class="form-control">
         </p>
 
         <p class="row">
-            <label for="fsujet" >Choisis un sujet: </label>
+            <label for="fsujet" class="form-label">Choisis un sujet: </label>
             
-            <select name="sujet" required = "true">
+            <select id="fsujet" name="sujet" require="true" class="form-control">
                 <option value="">Motif du contact</option>
                 <option value="Commande non reçue">Commande non reçue</option>
                 <option value="Commande erronée">Commande erronée</option>
               </select>
-
         </p>
 
         <p class="row">
-            <label for="fmessage" >Message : </label>
-            <textarea id="fmessage" rows="10" cols="30" name="message" required = "true"></textarea>
+            <label for="fmessage" class="form-label">Message : </label>
+            <textarea id="fmessage" rows="10" cols="30" name="message"  require="true" class="form-control" ></textarea>
         </p>
 
         <p class="text-center">
@@ -107,3 +54,4 @@ $errors = [];
 
 </body>
 </html>
+
