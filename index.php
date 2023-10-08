@@ -1,5 +1,7 @@
 <?php
 
+$errors = [];
+
 // Tous les champs sont requis et ne doivent pas être vides.
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         
@@ -34,9 +36,18 @@
 
 }
 
-
-
 ?>
+
+<?php // Affichage des éventuelles erreurs 
+      if (count($errors) > 0) : ?>
+        <div class="border border-danger rounded p-3 m-5 bg-danger">
+            <ul>
+                <?php foreach ($errors as $error) : ?>
+                    <li><?= $error ?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+<?php endif; ?>
 
 
 <!DOCTYPE html>
@@ -54,7 +65,7 @@
 
         <p class="row">
             <label for="fprenom" class="form-label">Prenom : </label>
-            <input type="text" name="prenom"  required = "true">
+            <input type="text" name="prenom" required = "true">
         </p>
 
         <p class="row">
